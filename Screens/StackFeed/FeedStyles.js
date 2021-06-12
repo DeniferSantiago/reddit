@@ -22,6 +22,7 @@ export const getStyles = theme => {
         },
         listHeader: {
             elevation: theme.size.sectionsElevation,
+            zIndex: 10,
             marginBottom: Normalize(10),
             flexDirection: "row",
             justifyContent: "space-between"
