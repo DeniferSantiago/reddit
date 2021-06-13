@@ -24,3 +24,15 @@ He agregado pruebas para funcionalidades especificas de la aplicacion:
 
 - `TimeFormat.spec.js` Prueba la funcionalidad de formato de horas.
 - `Helpers.spec.js` Prueba la funcionalidad de convertir los numeros a un formato minimizado.
+
+## Instrucciones
+1. Clonar repositorio: `git clone https://github.com/DeniferSantiago/mdi-vuetify-intellisense.git`
+2. Instalar dependencias: `yarn`
+3. Instalar Pods (Solo IOS en Mac): `cd ios`, `pod install`, `cd ..`.
+4. Luego puede pasar a ejecutar la aplicacion o probarla como se describe en lo siguiente: 
+   - Ejecutar aplicación: `yarn run android` o `yarn run ios`.
+   - Ejecutar en modo *release* (recomendado): `yarn run android --variant=release` o `react-native run-ios --variant=release`.
+   - Ejecutar Tests: `yarn test`
+
+## Ayuda
+Si tiene alguna duda o inconveniente puede contactarse conmigo para proveerle de asesoría o de un apk: [Enviar correo](mailto:deniferjose05@gmail.com)
