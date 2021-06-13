@@ -11,7 +11,7 @@ import { CustomTheme } from "../../Helpers/Types";
 import { useDispatch } from "react-redux";
 import { AppActions } from "../../Actions/AppActions";
 import { SavedRoot } from "../StackSaved/SavedRoot";
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from "react-native-splash-screen";
 const Tab = createBottomTabNavigator();
 export const TabRoot = () => {
     /**@type {CustomTheme} */

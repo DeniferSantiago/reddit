@@ -8,11 +8,11 @@
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useColorScheme } from "react-native";
-import { darkTheme, theme } from "./Helpers/Theme";
+import { darkTheme, theme } from "./src/Helpers/Theme";
 import { Provider } from "react-redux";
-import { store } from "./Store/store";
+import { store } from "./src/Store/store";
 import { Provider as PaperProvider } from "react-native-paper";
-import { TabRoot } from "./Screens/TabApp/TabRoot";
+import { TabRoot } from "./src/Screens/TabApp/TabRoot";
 const App = () => {
     const isDark = useColorScheme() === "dark";
     return (
