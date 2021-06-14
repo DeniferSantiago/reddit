@@ -26,7 +26,7 @@ He agregado pruebas para funcionalidades especificas de la aplicacion:
 - `Helpers.spec.js` Prueba la funcionalidad de convertir los numeros a un formato minimizado.
 
 ## Instrucciones
-1. Clonar repositorio: `git clone https://github.com/DeniferSantiago/mdi-vuetify-intellisense.git`
+1. Clonar repositorio: `git clone https://github.com/DeniferSantiago/reddit.git`
 2. Instalar dependencias: `yarn`
 3. Instalar Pods (Solo IOS en Mac): `cd ios`, `pod install`, `cd ..`.
 4. Luego puede pasar a ejecutar la aplicacion o probarla como se describe en lo siguiente: 
