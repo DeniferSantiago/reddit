@@ -1,7 +1,7 @@
 /**@enum {String}*/
 export const TabScreens = {
     Feed: "FeedTab",
-    Home: "HomeTab"
+    Saved: "SavedTab"
 };
 export const SavedScreens = {
     Saved: "Saved",

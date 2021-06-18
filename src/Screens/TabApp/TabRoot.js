@@ -12,6 +12,8 @@ import { useDispatch } from "react-redux";
 import { AppActions } from "../../Actions/AppActions";
 import { SavedRoot } from "../StackSaved/SavedRoot";
 import SplashScreen from "react-native-splash-screen";
+import { linking } from "../../Helpers/DeepLink";
+import { Text } from "react-native";
 const Tab = createBottomTabNavigator();
 export const TabRoot = () => {
     /**@type {CustomTheme} */
@@ -22,7 +24,11 @@ export const TabRoot = () => {
         dispatch(AppActions.LoadCache());
     }, [dispatch]);
     return (
-        <NavigationContainer theme={theme} onReady={() => SplashScreen.hide()}>
+        <NavigationContainer
+            linking={linking}
+            fallback={<Text>Loading...</Text>}
+            theme={theme}
+            onReady={() => SplashScreen.hide()}>
             <Tab.Navigator
                 initialRouteName={TabScreens.Feed}
                 backBehavior="history"
@@ -62,7 +68,7 @@ export const TabRoot = () => {
                     }}
                 />
                 <Tab.Screen
-                    name={TabScreens.Home}
+                    name={TabScreens.Saved}
                     component={SavedRoot}
                     options={{
                         tabBarIcon: ({ color, focused }) => (
