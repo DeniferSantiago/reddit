@@ -1,10 +1,9 @@
 import React from "react";
 import { View } from "react-native";
 import { IconButton, Text, useTheme } from "react-native-paper";
-import { useDispatch, useSelector } from "react-redux";
-import { PostActions } from "../../Actions/PostActions";
 import { DisplayCant } from "../../Helpers/Helpers";
 import { CustomTheme } from "../../Helpers/Types";
+import { useVote } from "../../Hooks/Services/useVote";
 import { getStyles } from "../../Screens/StackFeed/FeedStyles";
 /**
  * @typedef {Object} VoteParams
@@ -18,21 +17,16 @@ export const Vote = ({ score, id }) => {
     /**@type {CustomTheme} */
     const theme = useTheme();
     var styles = getStyles(theme);
-    /**@type {({ id:String, vote: -1 | 1 })[]}*/
-    const votedPosts = useSelector(state => state.PostReducer.votedPosts);
-    const val = votedPosts.find(v => v.id === id);
-    const upVote = val?.vote === 1;
-    const downVote = val?.vote === -1;
-    const upColor = upVote ? theme.colors.primary : theme.colors.icon;
-    const upIcon = upVote ? "arrow-up-bold" : "arrow-up-bold-outline";
-    const downColor = downVote ? theme.colors.error : theme.colors.icon;
-    const downIcon = downVote ? "arrow-down-bold" : "arrow-down-bold-outline";
-    const dispatch = useDispatch();
-    /**@param {-1 | 1} val*/
-    const VotePress = v => {
-        if (v === val?.vote) dispatch(PostActions.UnVotePost(id));
-        else dispatch(PostActions.VotePost(id, v));
-    };
+
+    const { isUpVote, isDownVote, VotePress, loading, newScore } = useVote(
+        id,
+        score
+    );
+
+    const upColor = isUpVote ? theme.colors.primary : theme.colors.icon;
+    const upIcon = isUpVote ? "arrow-up-bold" : "arrow-up-bold-outline";
+    const downColor = isDownVote ? theme.colors.error : theme.colors.icon;
+    const downIcon = isDownVote ? "arrow-down-bold" : "arrow-down-bold-outline";
     return (
         <View
             style={[
@@ -45,16 +39,18 @@ export const Vote = ({ score, id }) => {
                 icon={upIcon}
                 size={theme.size.touchableIcons}
                 color={upColor}
+                disabled={loading}
                 onPress={() => VotePress(1)}
                 style={[styles.noMargin, styles.marginIconRight]}
             />
             <Text style={styles.fontBig} numberOfLines={1}>
-                {DisplayCant(score)}
+                {DisplayCant(newScore)}
             </Text>
             <IconButton
                 icon={downIcon}
                 size={theme.size.touchableIcons}
                 color={downColor}
+                disabled={loading}
                 onPress={() => VotePress(-1)}
                 style={[styles.noMargin, styles.marginIconLeft]}
             />

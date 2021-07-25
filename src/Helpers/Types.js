@@ -106,3 +106,6 @@ export const CustomTheme = CustomTheme;
 /**
  * @typedef {"best"|"hot"|"top"|"rising"|"new"} SortOptions
  */
+/**
+ * @typedef {({ id: String, vote: Number})} Vote
+ */

@@ -1,11 +1,13 @@
 import {
     addPosts,
+    addSavedPosts,
+    downVote,
     savePost,
     setAfterPost,
     setPosts,
+    setSavedPosts,
     unSavePost,
-    unVotePost,
-    votePost
+    upVote
 } from "./ActionsType";
 /**@param {import("../Helpers/Types").Post[]} posts */
 export const SetPosts = posts => {
@@ -19,35 +21,42 @@ export const AddPosts = posts => {
 export const SetAfterPost = after => {
     return { type: setAfterPost, after };
 };
-/**
- * @param {String} id
- * @param {-1 | 1} vote
- */
-export const VotePost = (id, vote) => {
-    return { type: votePost, vote: { id, vote } };
-};
-/**
- * @param {String} id
- */
-export const UnVotePost = id => {
-    return { type: unVotePost, id };
-};
 /**@param {import("../Helpers/Types").Post} post */
 export const SavePost = post => {
     return { type: savePost, post };
 };
-/**
- * @param {String} id
- */
+/**@param {import("../Helpers/Types").Post[]} posts */
+export const SetSavedPosts = posts => {
+    return { type: setSavedPosts, posts };
+};
+/**@param {import("../Helpers/Types").Post[]} posts */
+export const AddSavedPosts = posts => {
+    return { type: addSavedPosts, posts };
+};
+export const ClearSavedPosts = () => {
+    return { type: setSavedPosts, posts: [] };
+};
+/**@param {String} id*/
 export const UnSavePost = id => {
     return { type: unSavePost, id };
+};
+/**@param {import("../Helpers/Types").Vote} vote*/
+export const UpVote = vote => {
+    return { type: upVote, vote };
+};
+/**@param {import("../Helpers/Types").Vote} vote*/
+export const DownVote = vote => {
+    return { type: downVote, vote };
 };
 export const PostActions = {
     SetPosts,
     AddPosts,
     SetAfterPost,
-    VotePost,
-    UnVotePost,
+    SavePost,
     UnSavePost,
-    SavePost
+    SetSavedPosts,
+    AddSavedPosts,
+    ClearSavedPosts,
+    DownVote,
+    UpVote
 };

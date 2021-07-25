@@ -31,7 +31,7 @@ export const PostContent = ({ post }) => {
                 />
             );
         },
-        [styles.postContentImage]
+        [totalWidth]
     );
     return (
         <View>

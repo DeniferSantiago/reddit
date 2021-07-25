@@ -6,7 +6,7 @@ import { ApiResponseToPostList } from "../Helpers/Converter";
  * @param {?String} after
  * @returns {Promise<import("../Helpers/Types").PostResponse>}
  */
-export const GetHots = (sort, after, limit = 15, count = 0) => {
+export const GetPosts = (sort, after, limit = 15, count = 0) => {
     return new Promise(async (res, rej) => {
         try {
             const params = [`limit=${limit}`];

@@ -1,3 +1,5 @@
+import Model from "@nozbe/watermelondb/Model";
+
 export const DisplayCant = (num, sigfigs_opt = 3) => {
     try {
         num = num ?? 0;
@@ -26,3 +28,39 @@ const log10 = num => Math.round((Math.log(num) / Math.LN10) * 1e6) / 1e6;
  * @returns {String}
  */
 export const FixImageUrl = url => url?.replaceAll("amp;", "");
+/**
+ * @param {Object} obj
+ * @param {Model} model
+ * @param {(Object.<string, string>)} objFields
+ * @param {string} idField
+ */
+export const SetObjectToModel = (obj, model, objFields, idField) => {
+    for (const key in obj) {
+        if (Object.hasOwnProperty.call(obj, key)) {
+            const val = obj[key];
+            const objKey = Object.entries(objFields).find(
+                x => x[1] === idField
+            )[0];
+            if (key === "id") model[objKey] = val;
+            else model[key] = val;
+        }
+    }
+};
+/**
+ * @param {Model} model
+ * @param {(Object.<string, string>)} objFields
+ * @param {string} idField
+ */
+export const ModelToObject = (model, objFields, idField) => {
+    const res = {};
+    for (const key in objFields) {
+        if (Object.hasOwnProperty.call(objFields, key)) {
+            const modelVal = model[key];
+            const dbKey = objFields[key];
+            if (dbKey !== idField) res[key] = modelVal;
+            else res.id = modelVal;
+        }
+    }
+    return res;
+};
+export const ToRealId = id => id.split("_").pop();

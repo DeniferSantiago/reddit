@@ -10,7 +10,7 @@ import { PostLoading } from "./PostLoading";
 import { SortHeader } from "./SortHeader";
 /**
  * @typedef {Object} PostListParams
- * @property {({ sortVal: Meta, after: String}) => Promise<void>} GetData
+ * @property {({ sortVal: string, after: string}) => Promise<void>} GetData
  * @property {Boolean} loading
  * @property {Boolean} changingSort
  * @property {Meta} sort
